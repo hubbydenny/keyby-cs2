@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|solutionrelative:keyby\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\includes.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|solutionrelative:keyby\\includes.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\config\\config.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|solutionrelative:keyby\\src\\config\\config.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\config\\config.ixx||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|solutionrelative:keyby\\src\\config\\config.ixx||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\console\\console.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|solutionrelative:keyby\\src\\console\\console.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\console\\console.ixx||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{08A563BD-D3B4-41E0-A2D0-09D9D9D1C7B0}|keyby\\keyby.vcxproj|solutionrelative:keyby\\src\\console\\console.ixx||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "config.ixx",
+              "DocumentMoniker": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\config\\config.ixx",
+              "RelativeDocumentMoniker": "keyby\\src\\config\\config.ixx",
+              "ToolTip": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\config\\config.ixx",
+              "RelativeToolTip": "keyby\\src\\config\\config.ixx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001913|",
+              "WhenOpened": "2026-10-27T10:52:41.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "config.cpp",
+              "DocumentMoniker": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\config\\config.cpp",
+              "RelativeDocumentMoniker": "keyby\\src\\config\\config.cpp",
+              "ToolTip": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\config\\config.cpp",
+              "RelativeToolTip": "keyby\\src\\config\\config.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-10-27T10:52:20.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "includes.hpp",
+              "DocumentMoniker": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\includes.hpp",
+              "RelativeDocumentMoniker": "keyby\\includes.hpp",
+              "ToolTip": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\includes.hpp",
+              "RelativeToolTip": "keyby\\includes.hpp",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAqwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-10-27T10:37:53.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "console.ixx",
+              "DocumentMoniker": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\console\\console.ixx",
+              "RelativeDocumentMoniker": "keyby\\src\\console\\console.ixx",
+              "ToolTip": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\console\\console.ixx",
+              "RelativeToolTip": "keyby\\src\\console\\console.ixx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001913|",
+              "WhenOpened": "2026-10-27T10:19:20.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "console.cpp",
+              "DocumentMoniker": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\console\\console.cpp",
+              "RelativeDocumentMoniker": "keyby\\src\\console\\console.cpp",
+              "ToolTip": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\src\\console\\console.cpp",
+              "RelativeToolTip": "keyby\\src\\console\\console.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-10-27T10:19:13.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dllmain.cpp",
+              "DocumentMoniker": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\dllmain.cpp",
+              "RelativeDocumentMoniker": "keyby\\dllmain.cpp",
+              "ToolTip": "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\dllmain.cpp",
+              "RelativeToolTip": "keyby\\dllmain.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-10-27T10:16:59.958Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
