@@ -155,12 +155,47 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ext\imgui\imgui.cpp" />
+    <ClCompile Include="ext\imgui\imgui_demo.cpp" />
+    <ClCompile Include="ext\imgui\imgui_draw.cpp" />
+    <ClCompile Include="ext\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="ext\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="ext\imgui\imgui_tables.cpp" />
+    <ClCompile Include="ext\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="ext\safetyhook\safetyhook.cpp" />
+    <ClCompile Include="ext\safetyhook\Zydis.c">
+      <AdditionalIncludeDirectories>$(ProjectDir)ext\safetyhook;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="sdk\hooks\hooks.cpp" />
+    <ClCompile Include="sdk\hooks\hooks.ixx" />
+    <ClCompile Include="sdk\interfaces\csgo_input.ixx" />
+    <ClCompile Include="sdk\interfaces\input_sys.ixx" />
+    <ClCompile Include="sdk\interfaces\interfaces.cpp" />
+    <ClCompile Include="sdk\interfaces\interfaces.ixx" />
+    <ClCompile Include="sdk\interfaces\swapchain.ixx" />
+    <ClCompile Include="sdk\math\math.cpp" />
+    <ClCompile Include="sdk\math\math.ixx" />
+    <ClCompile Include="sdk\memory\memory.cpp" />
+    <ClCompile Include="sdk\memory\memory.ixx" />
+    <ClCompile Include="sdk\memory\patterns.ixx" />
     <ClCompile Include="src\config\config.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="includes.hpp" />
     <ClCompile Include="src\config\config.ixx" />
-    <ClCompile Include="src\console\console.cpp" />
     <ClCompile Include="src\console\console.ixx" />
+    <ClCompile Include="sdk\error handler\Handler.ixx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ext\safetyhook\safetyhook.hpp" />
+    <ClInclude Include="ext\safetyhook\Zydis.h" />
+    <ClInclude Include="includes.hpp" />
+    <ClInclude Include="ext\imgui\imconfig.h" />
+    <ClInclude Include="ext\imgui\imgui.h" />
+    <ClInclude Include="ext\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="ext\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="ext\imgui\imgui_internal.h" />
+    <ClInclude Include="ext\imgui\imstb_rectpack.h" />
+    <ClInclude Include="ext\imgui\imstb_textedit.h" />
+    <ClInclude Include="ext\imgui\imstb_truetype.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

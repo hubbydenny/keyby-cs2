@@ -1,8 +1,10 @@
+﻿#pragma once
+
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
 #endif
-
 #include <Windows.h>
+
 #include <cstdint>
 #include <cstddef>
 #include <vector>
@@ -16,6 +18,15 @@
 #include <thread>
 #include <string>
 #include <string_view>
+#include <chrono>
+#include <atomic>
+#include <stdexcept>
+#include <utility>
+#include <expected> // для ошибка хендлеа
+#include <source_location> // для приколов
+
+#include "ext/safetyhook/safetyhook.hpp"
+#include "ext/safetyhook/Zydis.h"
 
 #include "ext/imgui/imgui.h"
 #include "ext/imgui/imconfig.h"
@@ -25,8 +36,3 @@
 #include "ext/imgui/imstb_rectpack.h"
 #include "ext/imgui/imstb_textedit.h"
 #include "ext/imgui/imstb_truetype.h"
-
-#include "ext/minhook/buffer.h"
-#include "ext/minhook/MinHook.h"
-#include "ext/minhook/trampoline.h"
-#include "ext/minhook/hde/pstdint.h"
