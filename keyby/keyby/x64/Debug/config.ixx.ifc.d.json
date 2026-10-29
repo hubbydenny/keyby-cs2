@@ -1,0 +1,10 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\src\\config\\config.ixx",
+        "ProvidedModule": "cfg",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

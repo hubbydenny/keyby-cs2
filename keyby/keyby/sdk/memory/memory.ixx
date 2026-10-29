@@ -15,6 +15,8 @@ namespace mem {
 	vfunc getvfunc(void* fmt) {
 		return (*static_cast<vfunc**>(fmt))[Index];
 	}
-	std::uint8_t* pattern(const std::string_view& module_name, const std::string_view& pat);
-	std::uint8_t* resolve_absolute_rip_address(std::uint8_t* inst, std::size_t offset_to_disp, std::size_t inst_disp);
+	export std::uint8_t* find_pattern(const char* module_name, const char* pattern);
+	export void* read_pointer(const void* address);
+	export bool is_readable(const void* address, std::size_t size);
+	export std::uint8_t* resolve_absolute_rip_address(std::uint8_t* inst, std::size_t offset_to_disp, std::size_t inst_disp);
 }

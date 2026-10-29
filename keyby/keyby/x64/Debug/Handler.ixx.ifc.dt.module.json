@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\Handler.obj",
+            "outputs": [
+                "x64\\Debug\\Handler.ixx.ifc.dt.module.json",
+                "x64\\Debug\\Handler.ixx.ifc.dt.d.json",
+                "x64\\Debug\\error.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "error",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\src\\errhandler\\handler.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IntDir>$(ProjectDir)build\obj\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)ext\;$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -166,13 +169,18 @@
     <ClCompile Include="ext\safetyhook\Zydis.c">
       <AdditionalIncludeDirectories>$(ProjectDir)ext\safetyhook;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="sdk\classes\player.ixx" />
+    <ClCompile Include="sdk\classes\entity_types.ixx" />
+    <ClCompile Include="sdk\classes\types.ixx" />
     <ClCompile Include="sdk\hooks\hooks.cpp" />
     <ClCompile Include="sdk\hooks\hooks.ixx" />
     <ClCompile Include="sdk\interfaces\csgo_input.ixx" />
+    <ClCompile Include="sdk\interfaces\entitylist.ixx" />
     <ClCompile Include="sdk\interfaces\input_sys.ixx" />
     <ClCompile Include="sdk\interfaces\interfaces.cpp" />
     <ClCompile Include="sdk\interfaces\interfaces.ixx" />
-    <ClCompile Include="sdk\interfaces\swapchain.ixx" />
+    <ClCompile Include="sdk\interfaces\schema.ixx" />
+    <ClCompile Include="sdk\globals.ixx" />
     <ClCompile Include="sdk\math\math.cpp" />
     <ClCompile Include="sdk\math\math.ixx" />
     <ClCompile Include="sdk\memory\memory.cpp" />
@@ -182,7 +190,14 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="src\config\config.ixx" />
     <ClCompile Include="src\console\console.ixx" />
-    <ClCompile Include="sdk\error handler\Handler.ixx" />
+    <ClCompile Include="src\errhandler\Handler.ixx" />
+    <ClCompile Include="src\features\visuals\visuals.cpp" />
+    <ClCompile Include="src\features\visuals\visuals.ixx" />
+    <ClCompile Include="src\render\render.cpp" />
+    <ClCompile Include="src\render\render.ixx" />
+    <ClCompile Include="src\init\init.ixx" />
+    <ClCompile Include="src\menu\menu.cpp" />
+    <ClCompile Include="src\menu\menu.ixx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\safetyhook\safetyhook.hpp" />

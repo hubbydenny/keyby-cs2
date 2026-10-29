@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "keyby\\x64\\Debug\\config.ixx.obj",
+            "outputs": [
+                "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\keyby\\x64\\Debug\\vc143.pdb",
+                "keyby\\x64\\Debug\\",
+                "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\keyby\\x64\\Debug\\config.ixx.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "cfg",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\src\\config\\config.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

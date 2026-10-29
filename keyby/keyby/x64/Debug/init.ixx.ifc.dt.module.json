@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\init.obj",
+            "outputs": [
+                "x64\\Debug\\init.ixx.ifc.dt.module.json",
+                "x64\\Debug\\init.ixx.ifc.dt.d.json",
+                "x64\\Debug\\init.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "init",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\src\\init\\init.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": [
+                {
+                    "logical-name": "error"
+                },
+                {
+                    "logical-name": "interfaces"
+                },
+                {
+                    "logical-name": "console"
+                }
+            ]
+        }
+    ]
+}

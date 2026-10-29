@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\csgo_input.obj",
+            "outputs": [
+                "x64\\Debug\\csgo_input.ixx.ifc.dt.module.json",
+                "x64\\Debug\\csgo_input.ixx.ifc.dt.d.json",
+                "x64\\Debug\\csgo_input.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "csgo_input",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\sdk\\interfaces\\csgo_input.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

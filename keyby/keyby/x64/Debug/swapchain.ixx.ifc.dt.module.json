@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\swapchain.obj",
+            "outputs": [
+                "x64\\Debug\\swapchain.ixx.ifc.dt.module.json",
+                "x64\\Debug\\swapchain.ixx.ifc.dt.d.json",
+                "x64\\Debug\\swapchain_interface.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "swapchain_interface",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\sdk\\interfaces\\swapchain.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": [
+                {
+                    "logical-name": "memory"
+                }
+            ]
+        }
+    ]
+}

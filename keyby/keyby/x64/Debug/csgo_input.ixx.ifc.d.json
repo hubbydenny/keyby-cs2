@@ -1,0 +1,10 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\sdk\\interfaces\\csgo_input.ixx",
+        "ProvidedModule": "csgo_input",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

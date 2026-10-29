@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\console.obj",
+            "outputs": [
+                "x64\\Debug\\console.ixx.ifc.dt.module.json",
+                "x64\\Debug\\console.ixx.ifc.dt.d.json",
+                "x64\\Debug\\console.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "console",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\src\\console\\console.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

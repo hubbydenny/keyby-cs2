@@ -1,33 +1,32 @@
 ﻿#include "includes.hpp"
-import interfaces;
+import init;
 import cfg;
 import console;
 
-DWORD WINAPI CheatThread(LPVOID instance) {
-	con::alloc();
-	con::log("[+] injected");
-	interfaces::create();
-	con::log("[+] interfaces");
+auto __stdcall CheatThread(LPVOID instance) -> DWORD {
+    auto& system = cheat_init::SysAttr;
+    const auto result = system.init();
 
+    if (!result) {
+        con::log("[-] {}", result.error().message);
+        OutputDebugStringA(result.error().message.data());
+        return system.detach(reinterpret_cast<HMODULE>(instance), 1);
+    }
 
-	while (!GetAsyncKeyState(VK_F2) & 1 && !config::cfgutils::allow_detach) {
-		Sleep(100);
-	}
+    while ((GetAsyncKeyState(VK_F2) & 0x8000) == 0 && !config::cheatutils::allow_detach) {
+        Sleep(100);
+    }
 
-	con::log("[+] detaching");
-	FreeLibraryAndExitThread(reinterpret_cast<HMODULE>(instance), 0);
-	return 0;
+    con::log("[+] detaching");
+    return system.detach(reinterpret_cast<HMODULE>(instance));
 }
 
-BOOL APIENTRY DllMain(HINSTANCE instance, DWORD reason, LPVOID) {
-	if (reason == DLL_PROCESS_ATTACH) {
-		DisableThreadLibraryCalls(instance);
-
-		HANDLE thread = CreateThread(nullptr, 0, CheatThread, instance, 0, nullptr);
-		if (thread != INVALID_HANDLE_VALUE) {
-			CloseHandle(thread);
-			return TRUE;
-		}
-		return FALSE;
-	}
-}	
+auto DllMain(HINSTANCE instance, DWORD reason, LPVOID) -> BOOL {
+    if (reason == DLL_PROCESS_ATTACH) {
+        DisableThreadLibraryCalls(instance);
+        HANDLE thread = CreateThread(nullptr, 0, CheatThread, instance, 0, nullptr);
+        if (!thread) return FALSE;
+        CloseHandle(thread);
+    }
+    return TRUE;
+}

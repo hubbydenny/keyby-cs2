@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\math.ixx.obj",
+            "outputs": [
+                "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\x64\\Debug\\vc143.pdb",
+                "x64\\Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -15,15 +15,14 @@
 #include <mutex>
 #include <span>
 #include <print>
-#include <thread>
 #include <string>
 #include <string_view>
 #include <chrono>
 #include <atomic>
 #include <stdexcept>
 #include <utility>
-#include <expected> // для ошибка хендлеа
-#include <source_location> // для приколов
+#include <expected>
+#include <source_location>
 
 #include "ext/safetyhook/safetyhook.hpp"
 #include "ext/safetyhook/Zydis.h"

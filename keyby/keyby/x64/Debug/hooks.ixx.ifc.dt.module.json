@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\hooks.obj",
+            "outputs": [
+                "x64\\Debug\\hooks.ixx.ifc.dt.module.json",
+                "x64\\Debug\\hooks.ixx.ifc.dt.d.json",
+                "x64\\Debug\\hooks.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "hooks",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\sdk\\hooks\\hooks.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": [
+                {
+                    "logical-name": "error"
+                }
+            ]
+        }
+    ]
+}

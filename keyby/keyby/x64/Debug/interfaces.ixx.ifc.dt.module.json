@@ -1,0 +1,38 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\interfaces.obj",
+            "outputs": [
+                "x64\\Debug\\interfaces.ixx.ifc.dt.module.json",
+                "x64\\Debug\\interfaces.ixx.ifc.dt.d.json",
+                "x64\\Debug\\interfaces.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "interfaces",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\sdk\\interfaces\\interfaces.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": [
+                {
+                    "logical-name": "csgo_input"
+                },
+                {
+                    "logical-name": "input_sys"
+                },
+                {
+                    "logical-name": "swapchain_interface"
+                },
+                {
+                    "logical-name": "memory"
+                },
+                {
+                    "logical-name": "error"
+                }
+            ]
+        }
+    ]
+}

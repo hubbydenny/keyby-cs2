@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\includes.obj",
+            "outputs": [
+                "x64\\Debug\\includes.ixx.ifc.dt.module.json",
+                "x64\\Debug\\includes.ixx.ifc.dt.d.json",
+                "x64\\Debug\\inc.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "inc",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\includes.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": [
+                {
+                    "logical-name": "console"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\init.ixx.obj",
+            "outputs": [
+                "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\x64\\Debug\\vc143.pdb",
+                "x64\\Debug\\",
+                "C:\\Users\\warp\\Documents\\GitHub\\keyby-cs2\\keyby\\keyby\\x64\\Debug\\init.ixx.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "init",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\src\\init\\init.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": [
+                {
+                    "logical-name": "error"
+                },
+                {
+                    "logical-name": "interfaces"
+                },
+                {
+                    "logical-name": "console"
+                },
+                {
+                    "logical-name": "hooks"
+                }
+            ]
+        }
+    ]
+}

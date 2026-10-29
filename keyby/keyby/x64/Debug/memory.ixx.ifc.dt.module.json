@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\memory.obj",
+            "outputs": [
+                "x64\\Debug\\memory.ixx.ifc.dt.module.json",
+                "x64\\Debug\\memory.ixx.ifc.dt.d.json",
+                "x64\\Debug\\memory.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "memory",
+                    "source-path": "c:\\users\\warp\\documents\\github\\keyby-cs2\\keyby\\keyby\\sdk\\memory\\memory.ixx",
+                    "is-interface": true
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -18,9 +18,6 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\console\console.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\console\console.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -75,13 +72,61 @@
     <ClCompile Include="sdk\math\math.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sdk\interfaces\swapchain.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sdk\interfaces\csgo_input.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sdk\interfaces\input_sys.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\safetyhook\safetyhook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\safetyhook\Zydis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\memory\patterns.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\errhandler\Handler.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\init\init.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\menu\menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\menu\menu.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\interfaces\schema.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\interfaces\entitylist.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\classes\player.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\classes\entity_types.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\globals.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\features\visuals\visuals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\features\visuals\visuals.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\classes\types.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render\render.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -111,6 +156,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ext\imgui\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\safetyhook\safetyhook.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\safetyhook\Zydis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
