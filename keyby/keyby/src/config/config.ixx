@@ -18,6 +18,7 @@ export namespace config {
 		export bool name{ false };
 		export bool health_bar{ false };
 		export bool health_gradient{ true };
+		export auto ViewSetup_fov{ 90.f };
 		export std::array<float, 4> box_color{ 1.f, 1.f, 1.f, 1.f };
 		export std::array<float, 4> outline_color{ 0.f, 0.f, 0.f, 1.f };
 		export std::array<float, 4> name_color{ 1.f, 1.f, 1.f, 1.f };

@@ -172,6 +172,7 @@
     <ClCompile Include="sdk\classes\player.ixx" />
     <ClCompile Include="sdk\classes\entity_types.ixx" />
     <ClCompile Include="sdk\classes\types.ixx" />
+    <ClCompile Include="sdk\classes\viewsetup.ixx" />
     <ClCompile Include="sdk\hooks\hooks.cpp" />
     <ClCompile Include="sdk\hooks\hooks.ixx" />
     <ClCompile Include="sdk\interfaces\csgo_input.ixx" />

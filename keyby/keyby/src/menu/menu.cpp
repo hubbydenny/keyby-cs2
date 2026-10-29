@@ -122,6 +122,7 @@ void menu::render() {
         ImGui::SetNextWindowSize(ImVec2(420, 360), ImGuiCond_FirstUseEver);
         if (ImGui::Begin("keyby", &opened)) {
             ImGui::TextUnformatted("ESP");
+            ImGui::SliderFloat("View FOV", &config::visuals::ViewSetup_fov, 60.f, 150.f, "%.0f");
             ImGui::Checkbox("Boxes", &config::visuals::drawesp);
             if (config::visuals::drawesp) {
                 ImGui::Checkbox("Corner box", &config::visuals::corner_box);
