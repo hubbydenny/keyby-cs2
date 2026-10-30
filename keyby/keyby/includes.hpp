@@ -23,6 +23,7 @@
 #include <utility>
 #include <expected>
 #include <source_location>
+#include <cmath>
 
 #include "ext/safetyhook/safetyhook.hpp"
 #include "ext/safetyhook/Zydis.h"

@@ -99,6 +99,9 @@
     <ClCompile Include="src\menu\menu.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\menu\style.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="sdk\interfaces\schema.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -109,6 +112,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sdk\classes\entity_types.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sdk\classes\trace.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sdk\globals.ixx">

@@ -67,21 +67,13 @@ public:
     static color_t yellow(std::uint8_t a = 255);
 };
 
-export namespace math
-{
+export namespace math {
     bool world_to_screen(vec3_t& origin, vec3_t& screen);
-
-    vec3_t calculate_angle(
-        const vec3_t& source,
-        const vec3_t& destination,
-        const vec3_t& view_angles);
-
-    float angle_distance(
-        const vec3_t& source,
-        const vec3_t& destination,
-        const vec3_t& view_angles);
+    vec3_t calculate_angle( const vec3_t& source, const vec3_t& destination, const vec3_t& view_angles);
+    float angle_distance( const vec3_t& source, const vec3_t& destination, const vec3_t& view_angles);
 }
 
+export void normalize_angles(vec3_t& angles);
 export float normalize_angle(float angle);
 export float normalize_yaw(float yaw);
 export float vel2d(const vec3_t& velocity);

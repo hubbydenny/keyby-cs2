@@ -143,12 +143,14 @@ export {
 		void*& AimPunchService() { return schema_system::field<void*, "C_CSPlayerPawn", "m_pAimPunchServices">(this); }
 		std::int32_t& ArmorVal() { return schema_system::field<std::int32_t, "C_CSPlayerPawn", "m_ArmorValue">(this); }
 		bool& GunImmunity() { return schema_system::field<bool, "C_CSPlayerPawn", "m_bGunGameImmunity">(this); }
+		float& simulation_time() { return schema_system::field<float, "C_BaseEntity", "m_flSimulationTime">(this); }
 		vec3_t& EyeAngles() { return schema_system::field<vec3_t, "C_CSPlayerPawn", "m_angEyeAngles">(this); }
 		std::int32_t& ShotsFired() { return schema_system::field<std::int32_t, "C_CSPlayerPawn", "m_iShotsFired">(this); }
 		bool& IsDefusing() { return schema_system::field<bool, "C_CSPlayerPawn", "m_bIsDefusing">(this); }
 		bool& IsScoped() { return schema_system::field<bool, "C_CSPlayerPawn", "m_bIsScoped">(this); }
 		bool& WaitForNoAttack() { return schema_system::field<bool, "C_CSPlayerPawn", "m_bWaitForNoAttack">(this); }
 		auto& health() { return schema_system::field<std::int32_t, "C_BaseEntity", "m_iHealth">(this); }
+		std::uint32_t& flags() { return schema_system::field<std::uint32_t, "C_BaseEntity", "m_fFlags">(this); }
 		entity_spotted_state_t& Spotted() { return schema_system::field<entity_spotted_state_t, "C_CSPlayerPawn", "m_entitySpottedState">(this); }
 		econ_item_view_t& EconGloves() { return schema_system::field<econ_item_view_t, "C_CSPlayerPawn", "m_EconGloves">(this); }
 		entity_handle_t& HudModelArms() { return schema_system::field<entity_handle_t, "C_CSPlayerPawn", "m_hHudModelArms">(this); }
@@ -230,6 +232,7 @@ export {
 	class base_player_controller_t : public entity_t {
 	public:
 		std::uint32_t& TickBase() { return schema_system::field<std::uint32_t, "CBasePlayerController", "m_nTickBase">(this); }
+		std::uint32_t& tick_base() { return TickBase(); }
 		entity_handle_t& PawnHandle() { return schema_system::field<entity_handle_t, "CBasePlayerController", "m_hPawn">(this); }
 		std::uint64_t& SteamId() { return schema_system::field<std::uint64_t, "CBasePlayerController", "m_steamID">(this); }
 		bool& IsLocalPlrController() { return schema_system::field<bool, "CBasePlayerController", "m_bIsLocalPlayerController">(this); }

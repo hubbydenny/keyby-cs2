@@ -28,12 +28,15 @@ namespace render {
 		draw->AddText({ x - size.x * .5f, y - size.y }, color, text);
 	}
 
-	void health_bar(ImDrawList* draw, float left, float top, float bottom, float fraction, ImU32 color, bool gradient) {
+	void health_bar(ImDrawList* draw, float left, float top, float bottom, float fraction, float width, ImU32 color, bool gradient) {
 		if (!draw) return;
 		fraction = (std::clamp)(fraction, 0.f, 1.f);
-		draw->AddRect({ left - 7.f, top - 1.f }, { left - 2.f, bottom + 1.f }, IM_COL32(0, 0, 0, 255), 0.f, 0, 1.f);
-		draw->AddRectFilled({ left - 6.f, top }, { left - 3.f, bottom }, IM_COL32(15, 15, 15, 220));
+		width = (std::clamp)(width, 1.f, 12.f);
+		const float bar_left = left - width - 3.f;
+		const float bar_right = left - 3.f;
+		draw->AddRect({ bar_left - 1.f, top - 1.f }, { bar_right + 1.f, bottom + 1.f }, IM_COL32(0, 0, 0, 255), 0.f, 0, 1.f);
+		draw->AddRectFilled({ bar_left, top }, { bar_right, bottom }, IM_COL32(15, 15, 15, 220));
 		const ImU32 fill = gradient ? static_cast<ImU32>(ImColor::HSV(fraction * .33f, 1.f, 1.f)) : color;
-		draw->AddRectFilled({ left - 6.f, bottom - (bottom - top) * fraction }, { left - 3.f, bottom }, fill);
+		draw->AddRectFilled({ bar_left, bottom - (bottom - top) * fraction }, { bar_right, bottom }, fill);
 	}
 }

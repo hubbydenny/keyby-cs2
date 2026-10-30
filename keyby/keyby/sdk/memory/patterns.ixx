@@ -15,4 +15,20 @@ export namespace patts {
 	inline constexpr const auto* IsInGame = "48 8B ? ? ? ? ? 48 85 C0 74 15 80 B8 ? ? ? ? ? 75 0C 83 B8 ? ? ? ? 06";
 	inline constexpr const auto* IsConnected = "48 8B 05 ? ? ? ? 48 85 C0 74 ? 83 B8 ? ? ? ? ? 0F 9D C0";
 	inline constexpr const auto* OverrideView = "40 53 57 48 83 EC 58 48 8B FA E8 ? ? ? ? 48";
+	inline constexpr const auto* CreateMove = "85 D2 0F 85 ? ? ? ? 48 8B C4 44 88 40 18";
+	inline constexpr const auto* GetUserCmdTick = "48 83 EC ? 4C 8B 0D ? ? ? ? 4C 8B DA";
+	inline constexpr const auto* GetUserCmdArray = "48 89 4C 24 ? 41 56 41 57";
+	inline constexpr const auto* GetUserCmdBySequence = "40 53 48 83 EC ? 8B DA E8 ? ? ? ? 4C 8B C0";
+	inline constexpr const auto* FirstUserCmdArray = "48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B CF 4C 8B F8";
+	inline constexpr const auto* GetViewAngles = "4C 8B C1 85 D2 74 ? 48 8D 05";
+	inline constexpr const auto* SetViewAngles = "85 D2 75 ? 48 63 81";
+	inline constexpr const auto* ValidateUserCommand = "85 D2 0F 85 ? ? ? ? 48 89 5C 24 ? 56";
+	inline constexpr const auto* FindHudElememnt = "40 53 48 83 EC 20 48 8B 05 ? ? ? ? 48 8B D9 48 85 C0 74 ? 48 89 5C 24 38";
+	inline constexpr const auto* VoidPrintCall = "E8 ? ? ? ? 4C 39 74 24 ? 74 ? 48 8D 4C 24 ? FF 15 ? ? ? ? 33 D2";
+	inline constexpr const auto* SerializeMoveCrc = "48 89 5C 24 20 55 56 57 48 83 EC 30 49 8B C0";
+	inline constexpr const auto* CreateSubtickMoveStep = "E8 ? ? ? ? 48 8B D0 48 8B CE E8 ? ? ? ? 48 8B C8";
+	inline constexpr const auto* ProtoBuffAddPtrEtc = "E8 ? ? ? ? 4C 8B D0 45 8B 4A 10";
+	inline constexpr const auto* TraceManager = "48 8B 1D ? ? ? ? 48 8B 01 FF 90 ? ? ? ? 4C 8B 0B 4C 8D 44 24 ? 48 8B C8";
+	inline constexpr const auto* TraceShape = "48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 54 41 56 41 57 48 8D AC 24 ? ? ? ? B8";
+	inline constexpr const auto* TraceFilterInit = "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 0F B6 41 ? 33 FF 24";
 }

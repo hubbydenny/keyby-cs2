@@ -14,17 +14,22 @@ import globals;
 import players_class;
 import viewsetup_class;
 import cfg;
+import combat;
+import movement;
 
 namespace {
-    safetyhook::InlineHook present_hook, resize_hook;
     using Present = HRESULT (STDMETHODCALLTYPE*)(IDXGISwapChain*, UINT, UINT);
     using Resize = HRESULT (STDMETHODCALLTYPE*)(IDXGISwapChain*, UINT, UINT, UINT, DXGI_FORMAT, UINT);
     using RelativeMouse = void* (*)(inputsys*, bool);
     using MouseEnabled = bool (*)(csgoinput*);
     using OverrideView = void(__fastcall*)(void*, CViewSetup*);
+    using CreateMove = void(__fastcall*)(void*, std::uint32_t, std::uint8_t);
+    using ValidateUserCommand = void(__fastcall*)(csgoinput*, std::int32_t);
 
-    safetyhook::InlineHook relative_mouse_hook, mouse_enabled_hook, override_view_hook;
+    safetyhook::InlineHook relative_mouse_hook, mouse_enabled_hook, override_view_hook, present_hook, resize_hook, createmove_hook, validate_user_command_hook;
 
+    CreateMove original_createmove = nullptr;
+    ValidateUserCommand original_validate_user_command = nullptr;
     OverrideView original_override_view = nullptr;
     RelativeMouse original_relative_mouse = nullptr;
     MouseEnabled original_mouse_enabled = nullptr;
@@ -79,6 +84,7 @@ namespace {
         }
         return original_resize(chain, count, width, height, format, flags);
     }
+
     bool mouse_enabled(csgoinput* input) {
         active_call call;
         return !stopping && config::menu::opened ? false : original_mouse_enabled(input);
@@ -86,10 +92,37 @@ namespace {
 
     void __fastcall override_view(void* client_mode, CViewSetup* view_setup) {
         active_call call;
-        if (!original_override_view) return;
+        auto local = globals::local;
+        if (!original_override_view || !config::visuals::viewfov || local->IsScoped()) return;
         original_override_view(client_mode, view_setup);
         if (view_setup) view_setup->fov = config::visuals::ViewSetup_fov;
     }
+
+    void __fastcall createmove(void* a1, std::uint32_t a2, std::uint8_t a3) {
+        active_call call;
+        if (!original_createmove) return;
+        interfaces::CsgoInput = reinterpret_cast<csgoinput*>(a1);
+        original_createmove(a1, a2, a3);
+        globals::update_local();
+        globals::cmd = globals::local_controller && interfaces::CsgoInput
+            ? interfaces::CsgoInput->get_user_cmd(globals::local_controller) : nullptr;
+        if (globals::cmd && globals::cmd->valid()) {
+            movement::Bunnyhop(globals::cmd);
+            combat::Aimbot();
+        }
+    }
+
+    void __fastcall validate_user_command(csgoinput* input, std::int32_t slot) {
+        active_call call;
+        if (!original_validate_user_command) return;
+        original_validate_user_command(input, slot);
+        if (slot == 0 && globals::silent_active && input == interfaces::CsgoInput) {
+            input->set_view_angles(globals::silent_camera);
+            globals::silent_cmd = nullptr;
+            globals::silent_active = false;
+        }
+    }
+
     void* relative_mouse(inputsys* input, bool enabled) {
         active_call call;
         std::lock_guard lock(mouse_mutex);
@@ -97,7 +130,6 @@ namespace {
         relative_mode_known = true;
         return original_relative_mouse(input, !stopping && config::menu::opened ? false : enabled);
     }
-
     void update_mouse_mode(bool opened) {
         std::lock_guard lock(mouse_mutex);
         if (!original_relative_mouse || !interfaces::InputSystem) return;
@@ -118,9 +150,16 @@ namespace {
 error::Result<void> hooks::start() try {
     if (present_hook) return {};
     for (int i = 0; i < 500 && !GetModuleHandleA("gameoverlayrenderer64.dll"); ++i) Sleep(10);
+
     auto* present_target = mem::find_pattern("gameoverlayrenderer64.dll", patts::PresentHookTarget);
     auto* resize_target = mem::find_pattern("gameoverlayrenderer64.dll", patts::ResizeTarget);
     auto* ovrd_view_setup = mem::find_pattern("client.dll", patts::OverrideView);
+    auto* createmove_target = mem::find_pattern("client.dll", patts::CreateMove);
+    auto* validate_target = mem::find_pattern("client.dll", patts::ValidateUserCommand);
+
+    if (!createmove_target || !validate_target)
+        return std::unexpected(error::Info{error::Code::InitializationFailed, "CreateMove pattern not found"});
+
     if (!interfaces::CsgoInput || !interfaces::InputSystem) return std::unexpected(error::Info{error::Code::InterfaceNotFound, "Mouse input interfaces are null"});
 
     auto* mouse_vtable = static_cast<void**>(mem::read_pointer(interfaces::CsgoInput));
@@ -129,13 +168,15 @@ error::Result<void> hooks::start() try {
     auto* relative_target = mem::read_pointer(relative_vtable + relative_mouse_index);
 
     override_view_hook = safetyhook::create_inline(ovrd_view_setup, override_view, safetyhook::InlineHook::StartDisabled);
+    createmove_hook = safetyhook::create_inline(createmove_target, createmove, safetyhook::InlineHook::StartDisabled);
+    validate_user_command_hook = safetyhook::create_inline(validate_target, validate_user_command, safetyhook::InlineHook::StartDisabled);
     present_hook = safetyhook::create_inline(present_target, present, safetyhook::InlineHook::StartDisabled);
     resize_hook = safetyhook::create_inline(resize_target, resize, safetyhook::InlineHook::StartDisabled);
     mouse_enabled_hook = safetyhook::create_inline(mouse_target, mouse_enabled, safetyhook::InlineHook::StartDisabled);
     relative_mouse_hook = safetyhook::create_inline(relative_target, relative_mouse, safetyhook::InlineHook::StartDisabled);
 
 
-    if (!present_hook || !resize_hook || !mouse_enabled_hook || !relative_mouse_hook || !override_view_hook) {
+    if (!present_hook || !resize_hook || !mouse_enabled_hook || !relative_mouse_hook || !override_view_hook || !createmove_hook || !validate_user_command_hook) {
         stop();
         return std::unexpected(error::Info{error::Code::InitializationFailed, "Failed to create DXGI hooks"});
     }
@@ -144,6 +185,8 @@ error::Result<void> hooks::start() try {
     original_mouse_enabled = mouse_enabled_hook.original<MouseEnabled>();
     original_relative_mouse = relative_mouse_hook.original<RelativeMouse>();
     original_override_view = override_view_hook.original<OverrideView>();
+    original_createmove = createmove_hook.original<CreateMove>();
+    original_validate_user_command = validate_user_command_hook.original<ValidateUserCommand>();
 
     relative_mode_known = false;
     mouse_overridden = false;
@@ -152,7 +195,7 @@ error::Result<void> hooks::start() try {
     attempted = false;
 
     if (!mouse_enabled_hook.enable() || !relative_mouse_hook.enable() || !resize_hook.enable() ||
-        !present_hook.enable() || !override_view_hook.enable()) {
+        !present_hook.enable() || !override_view_hook.enable() || !createmove_hook.enable() || !validate_user_command_hook.enable()) {
         stop();
         return std::unexpected(error::Info{error::Code::InitializationFailed, "Failed to enable DXGI hooks"});
     }
@@ -165,18 +208,23 @@ error::Result<void> hooks::start() try {
 
 bool hooks::stop() {
     stopping = true;
-    for (auto* hook : {&present_hook, &resize_hook, &mouse_enabled_hook, &relative_mouse_hook, &override_view_hook})
+    for (auto* hook : {&present_hook, &resize_hook, &mouse_enabled_hook, &relative_mouse_hook, &override_view_hook, &createmove_hook, &validate_user_command_hook})
         if (*hook && !hook->disable()) return false;
     while (active_calls.load() != 0) Sleep(1);
     std::lock_guard lock(render_mutex);
     if (!menu::destroy()) return false;
     menu::set_mouse_mode_handler(nullptr);
     config::menu::opened = false;
-    for (auto* hook : {&present_hook, &resize_hook, &mouse_enabled_hook, &relative_mouse_hook, &override_view_hook})
+    for (auto* hook : {&present_hook, &resize_hook, &mouse_enabled_hook, &relative_mouse_hook, &override_view_hook, &createmove_hook, &validate_user_command_hook})
         hook->reset();
     original_mouse_enabled = nullptr;
     original_relative_mouse = nullptr;
     original_override_view = nullptr;
+    original_createmove = nullptr;
+    original_validate_user_command = nullptr;
+    globals::cmd = nullptr;
+    globals::silent_cmd = nullptr;
+    globals::silent_active = false;
     current_chain = nullptr;
     attempted = false;
     return true;

@@ -139,6 +139,12 @@ color_t color_t::yellow(std::uint8_t a)
     return { 247, 202, 24, a };
 }
 
+void normalize_angles(vec3_t& angles)
+{
+	angles.x = (std::clamp)(angles.x, -89.f, 89.f);
+	angles.y = normalize_yaw(angles.y);
+	angles.z = 0.f;
+}
 
 float normalize_angle(float angle) {
     angle = std::fmod(angle, 360.f);
@@ -148,8 +154,7 @@ float normalize_angle(float angle) {
     return angle;
 }
 
-namespace math
-{
+namespace math {
     bool world_to_screen(vec3_t& origin, vec3_t& screen)
     {
         using function_t = bool(__fastcall*)(vec3_t&, vec3_t&);
@@ -165,28 +170,17 @@ namespace math
         screen.y = (1.f - screen.y) * 0.5f * height;
         return status;
     }
-
-    vec3_t calculate_angle(
-        const vec3_t& source,
-        const vec3_t& destination,
-        const vec3_t& view_angles)
-    {
-        const vec3_t trace(
-            destination.x - source.x,
-            destination.y - source.y,
-            destination.z - source.z);
-
+    vec3_t calculate_angle(const vec3_t& source, const vec3_t& destination,  const vec3_t& view_angles) {
+        const vec3_t trace( destination.x - source.x, destination.y - source.y, destination.z - source.z);
         const float flat_distance = std::hypot(trace.x, trace.y);
 
         vec3_t angles;
 
-        if (flat_distance == 0.f)
-        {
+        if (flat_distance == 0.f)  {
             angles.x = view_angles.x;
             angles.y = view_angles.y;
         }
-        else
-        {
+        else {
             constexpr float rad_to_deg = 180.f / std::numbers::pi_v<float>;
 
             angles.x = std::atan2(-trace.z, flat_distance) * rad_to_deg;
@@ -201,11 +195,7 @@ namespace math
         return angles;
     }
 
-    float angle_distance(
-        const vec3_t& source,
-        const vec3_t& destination,
-        const vec3_t& view_angles)
-    {
+    float angle_distance( const vec3_t& source, const vec3_t& destination, const vec3_t& view_angles) {
         const vec3_t delta = calculate_angle(source, destination, view_angles);
         return std::hypot(delta.x, delta.y);
     }

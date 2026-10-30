@@ -2,7 +2,7 @@ module;
 #include <cstdint>
 export module types;
 
-enum class buttons_t{
+export enum buttons_t : std::uint64_t {
 	in_attack = 1ull << 0,
 	in_jump = 1ull << 1,
 	in_duck = 1ull << 2,
@@ -48,7 +48,7 @@ enum class movetype_t  {
 	movetype_max_bits = 4
 };
 
-enum class flags_t {
+export enum class flags_t {
 	fl_onground = (1 << 0),
 	fl_ducking = (1 << 1),
 	fl_waterjump = (1 << 2),

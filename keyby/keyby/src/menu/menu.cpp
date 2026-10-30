@@ -8,6 +8,7 @@ import cfg;
 import interfaces;
 import globals;
 import visuals;
+import menu_style;
 
 extern "C++" {
     IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND, UINT, WPARAM, LPARAM);
@@ -58,6 +59,7 @@ error::Result<void> menu::create() {
     io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
     io.IniFilename = nullptr;
     ImGui::StyleColorsDark();
+    menu_style::apply();
     if (!ImGui_ImplWin32_Init(interfaces::hwnd)) {
         ImGui::DestroyContext();
         return std::unexpected(error::Info{error::Code::InitializationFailed, "ImGui Win32 initialization failed"});
@@ -116,27 +118,63 @@ void menu::render() {
 
     ImGui::NewFrame();
     globals::update_local();
-    visuals::DrawBoxes(globals::entity_list, globals::local_player);
+    visuals::DrawBoxes();
 
     if (opened) {
-        ImGui::SetNextWindowSize(ImVec2(420, 360), ImGuiCond_FirstUseEver);
-        if (ImGui::Begin("keyby", &opened)) {
-            ImGui::TextUnformatted("ESP");
-            ImGui::SliderFloat("View FOV", &config::visuals::ViewSetup_fov, 60.f, 150.f, "%.0f");
-            ImGui::Checkbox("Boxes", &config::visuals::drawesp);
-            if (config::visuals::drawesp) {
-                ImGui::Checkbox("Corner box", &config::visuals::corner_box);
-                ImGui::Checkbox("Outline", &config::visuals::outline);
-                ImGui::Checkbox("Name", &config::visuals::name);
-                ImGui::Checkbox("Health bar", &config::visuals::health_bar);
-				if (config::visuals::health_bar)
-					ImGui::Checkbox("Health gradient", &config::visuals::health_gradient);
-                ImGui::ColorEdit4("Box color", config::visuals::box_color.data());
-                ImGui::ColorEdit4("Outline color", config::visuals::outline_color.data());
-                if (config::visuals::name)
-                    ImGui::ColorEdit4("Name color", config::visuals::name_color.data());
-                if (config::visuals::health_bar)
-                    ImGui::ColorEdit4("Health color", config::visuals::health_color.data());
+        ImGui::SetNextWindowSize(ImVec2(430, 390), ImGuiCond_FirstUseEver);
+        constexpr ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize;
+        if (ImGui::Begin("keyby", &opened, window_flags)) {
+            constexpr ImGuiTabBarFlags tab_flags = ImGuiTabBarFlags_NoTooltip | ImGuiTabBarFlags_FittingPolicyResizeDown;
+            if (ImGui::BeginTabBar("##tabs", tab_flags)) {
+
+                if (ImGui::BeginTabItem("combat")) {
+                    if (ImGui::BeginChild("##combat_panel", {}, true, ImGuiWindowFlags_NoScrollbar)) {
+                        ImGui::Checkbox("enabled", &config::combat::enabled);
+                        if (config::combat::enabled) {
+                            ImGui::Checkbox("silent", &config::combat::silent);
+                            ImGui::SliderFloat("fov", &config::combat::fov, 1.f, 30.f, "%.1f");
+                            ImGui::SliderFloat("smooth", &config::combat::smoothvalue, 1.f, 20.f, "%.1f");
+                        }
+                        ImGui::EndChild();
+                    }
+                    ImGui::EndTabItem();
+                }
+                if (ImGui::BeginTabItem("visuals")) {
+
+                    if (ImGui::BeginChild("##visuals_panel", {}, true, ImGuiWindowFlags_NoScrollbar)) {
+                        ImGui::SliderFloat("view fov", &config::visuals::ViewSetup_fov, 60.f, 150.f, "%.0f");
+                        ImGui::Checkbox("boxes", &config::visuals::drawesp);
+                        if (config::visuals::drawesp) {
+                            ImGui::Indent(8.f);
+                            ImGui::Checkbox("Team", &config::cheatutils::allow_team);
+                            ImGui::Checkbox("corner box", &config::visuals::corner_box);
+                            ImGui::Checkbox("outline", &config::visuals::outline);
+                            ImGui::Checkbox("name", &config::visuals::name);
+                            ImGui::Checkbox("health bar", &config::visuals::health_bar);
+                            if (config::visuals::health_bar) {
+                                ImGui::Checkbox("health gradient", &config::visuals::health_gradient);
+                                ImGui::SliderFloat("health width", &config::visuals::health_bar_width, 1.f, 12.f, "%.1f");
+                            }
+                            ImGui::ColorEdit4("box color", config::visuals::box_color.data(), ImGuiColorEditFlags_NoInputs);
+                            ImGui::ColorEdit4("outline color", config::visuals::outline_color.data(), ImGuiColorEditFlags_NoInputs);
+                            if (config::visuals::name)
+                                ImGui::ColorEdit4("name color", config::visuals::name_color.data(), ImGuiColorEditFlags_NoInputs);
+                            if (config::visuals::health_bar)
+                                ImGui::ColorEdit4("health color", config::visuals::health_color.data(), ImGuiColorEditFlags_NoInputs);
+                            ImGui::Unindent(8.f);
+                        }
+                        ImGui::EndChild();
+                    }
+                    ImGui::EndTabItem();
+                }
+                if (ImGui::BeginTabItem("movement")) {
+                    if (ImGui::BeginChild("##movement_panel", {}, true, ImGuiWindowFlags_NoScrollbar)) {
+                        ImGui::Checkbox("bhop", &config::movement::bhop);
+                        ImGui::EndChild();
+                    }
+                    ImGui::EndTabItem();
+                }
+                ImGui::EndTabBar();
             }
         }
         ImGui::End();

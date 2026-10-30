@@ -172,6 +172,8 @@
     <ClCompile Include="sdk\classes\player.ixx" />
     <ClCompile Include="sdk\classes\entity_types.ixx" />
     <ClCompile Include="sdk\classes\types.ixx" />
+    <ClCompile Include="sdk\classes\usercmd.ixx" />
+    <ClCompile Include="sdk\classes\trace.ixx" />
     <ClCompile Include="sdk\classes\viewsetup.ixx" />
     <ClCompile Include="sdk\hooks\hooks.cpp" />
     <ClCompile Include="sdk\hooks\hooks.ixx" />
@@ -192,6 +194,10 @@
     <ClCompile Include="src\config\config.ixx" />
     <ClCompile Include="src\console\console.ixx" />
     <ClCompile Include="src\errhandler\Handler.ixx" />
+    <ClCompile Include="src\features\combat\combat.cpp" />
+    <ClCompile Include="src\features\combat\combat.ixx" />
+    <ClCompile Include="src\features\movement\movement.cpp" />
+    <ClCompile Include="src\features\movement\movement.ixx" />
     <ClCompile Include="src\features\visuals\visuals.cpp" />
     <ClCompile Include="src\features\visuals\visuals.ixx" />
     <ClCompile Include="src\render\render.cpp" />
@@ -199,6 +205,7 @@
     <ClCompile Include="src\init\init.ixx" />
     <ClCompile Include="src\menu\menu.cpp" />
     <ClCompile Include="src\menu\menu.ixx" />
+    <ClCompile Include="src\menu\style.ixx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\safetyhook\safetyhook.hpp" />

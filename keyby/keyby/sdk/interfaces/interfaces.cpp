@@ -78,8 +78,8 @@ namespace interfaces {
         auto* entity_address = mem::resolve_absolute_rip_address(
             mem::find_pattern("client.dll", patts::EntityList), 3, 7);
         globals::entity_list = reinterpret_cast<i_entity_list*>(mem::read_pointer(entity_address));
-        if (!globals::entity_list)
-            return std::unexpected(error::Info{error::Code::InterfaceNotFound, "EntityList initialization failed"});
+        if (!globals::entity_list)  return std::unexpected(error::Info{error::Code::InterfaceNotFound, "[-] EntityList initialization failed"});
+        if (!globals::trace.initialize()) con::log("[-] Trace initialization failed");
 
         schema_system::bind(SchemaSystem);
         return {};
@@ -94,7 +94,8 @@ namespace interfaces {
         CsgoInput = nullptr;
         globals::entity_list = nullptr;
         globals::local_controller = nullptr;
-        globals::local_player = nullptr;
+        globals::local = nullptr;
+        globals::trace.reset();
         schema_system::bind(nullptr);
         SchemaSystem = nullptr;
     }

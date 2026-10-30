@@ -32,11 +32,12 @@ namespace visuals {
 
 	static void draw_health(ImDrawList* draw, player_t* player, float left, float top, float bottom) {
 		if (config::visuals::health_bar)
-			render::health_bar(draw, left, top, bottom, player->health() / 100.f,
-				color(config::visuals::health_color), config::visuals::health_gradient);
+			render::health_bar(draw, left, top, bottom, player->health() / 100.f, config::visuals::health_bar_width, color(config::visuals::health_color), config::visuals::health_gradient);
 	}
 
-	void DrawBoxes(i_entity_list* entity_list, player_t* local) {
+	void DrawBoxes() {
+		auto* entity_list = globals::entity_list;
+		auto* local = globals::local;
 		if (!entity_list || !local) return;
 		if (!config::visuals::drawesp) return;
 		auto* draw = ImGui::GetBackgroundDrawList();
@@ -45,8 +46,8 @@ namespace visuals {
 			if (!ctrl) continue;
 			auto player = entity_list->get_player_from_controller(ctrl);
 			if (!player || player == local || !player->IsAlive()) continue;
-			if (player->team() == globals::local_player->team()) continue;
-
+			if (!config::cheatutils::allow_team) if (player->team() == globals::local->team()) continue;
+			
 			vec3_t feet_world = player->abs_origin();
 			vec3_t head_world = player->GetEyePosition();
 			head_world.z += 6.f;
